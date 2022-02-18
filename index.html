@@ -1,584 +1,841 @@
-<!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexBox</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>FlexBox</title>
-  <script src="script.js" defer></script>
-</head>
-
-<body>
-  <h1>Entender Flexbox</h1>
-  <div class="principal">
-    <h2>Propiedades del contenedor flex</h2>
-    <div class="control">
-      <h4>
-        <details>
-          <summary><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-direction">flex-direction</a>
-            <p>
-              <small>Especifica cómo colocar los objetos flexibles definiendo el eje principal y la dirección (normal o
-                al
-                revés).</small>
-            </p>
-          </summary>
-          <!-- <a href="http://w3.unpocodetodo.info/css3/flex-direction.php"
+  <body>
+    <h1>Entender Flexbox</h1>
+    <div class="principal">
+      <h2>Propiedades del contenedor flex</h2>
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/CSS/flex-direction" target="_blank"
+                >flex-direction</a
+              >
+              <p>
+                <small
+                  >Especifica cómo colocar los objetos flexibles definiendo el
+                  eje principal y la dirección (normal o al revés).</small
+                >
+              </p>
+            </summary>
+            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-direction.php"
             >flex-direction</a
           > -->
-          <dl>
-            <dt>row</dt>
-            <dd>La dirección del texto se presenta en una línea</dd>
-            <dt>row-reverse</dt>
-            <dd>Como &lt;row&gt;, pero al revés</dd>
-            <dt>column</dt>
-            <dd>La dirección en la que se apilas las líneas de texto</dd>
-            <dt>Como &lt;column&gt;, pero al revés</dt>
-            <dd>Definición de Dos</dd>
-          </dl>
-        </details>
+            <dl>
+              <dt>row</dt>
+              <dd>La dirección del texto se presenta en una línea</dd>
+              <dt>row-reverse</dt>
+              <dd>Como &lt;row&gt;, pero al revés</dd>
+              <dt>column</dt>
+              <dd>La dirección en la que se apilas las líneas de texto</dd>
+              <dt>column-reverse</dt>
+              <dd>Como &lt;column&gt;, pero al revés</dd>
+            </dl>
+          </details>
+        </h4>
+        <!--flex-direction: row | row-reverse | column | column-reverse;-->
+        <div class="radio">
+          <input
+            name="flex-direction"
+            type="radio"
+            class="flex-direction"
+            id="R11"
+            value="row"
+            checked
+          /><label for="R11">row:</label>
+          <input
+            name="flex-direction"
+            type="radio"
+            class="flex-direction"
+            id="R12"
+            value="row-reverse"
+          /><label for="R12">row-reverse:</label>
+          <input
+            name="flex-direction"
+            type="radio"
+            class="flex-direction"
+            id="R13"
+            value="column"
+          /><label for="R13">column:</label>
+          <input
+            name="flex-direction"
+            type="radio"
+            class="flex-direction"
+            id="R14"
+            value="column-reverse"
+          /><label for="R14">column-reverse:</label>
+        </div>
+      </div>
+      <div class="flex-container" id="direction">
+        <div class="item" data-color="2a80b9">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="8f44ad">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="16a086">
+          <p>3</p>
+        </div>
+        <div class="item" data-color="f1c40f">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="e77e23">
+          <p>5</p>
+        </div>
+      </div>
 
-      </h4>
-      <!--flex-direction: row | row-reverse | column | column-reverse;-->
-      <div class="radio">
-        <input name="flex-direction" type="radio" class="flex-direction" id="R11" value="row" checked /><label
-          for="R11">row:</label>
-        <input name="flex-direction" type="radio" class="flex-direction" id="R12" value="row-reverse" /><label
-          for="R12">row-reverse:</label>
-        <input name="flex-direction" type="radio" class="flex-direction" id="R13" value="column" /><label
-          for="R13">column:</label>
-        <input name="flex-direction" type="radio" class="flex-direction" id="R14" value="column-reverse" /><label
-          for="R14">column-reverse:</label>
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-wrap.php">flex-wrap</a> -->
+              <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-wrap" target="_blank"
+                >flex-wrap</a
+              >
+              <p>
+                <small
+                  >Especifica si los elementos "hijos" son obligados a
+                  permanecer en una misma línea o pueden fluir en varias líneas.
+                  También te permite controlar la dirección en la cual serán
+                  apilados los elementos.</small
+                >
+              </p>
+            </summary>
+            <dl>
+              <dt>nowrap</dt>
+              <dd>
+                Los elementos flex son distribuidos en una sola línea, lo cual
+                puede llevar a que se desborde el contenedor flex.
+              </dd>
+              <dt>wrap</dt>
+              <dd>Los elementos flex son colocados en varias líneas.</dd>
+              <dt>wrap-reverse</dt>
+              <dd>
+                Actúa como &lt;wrap&gt; pero cross-start y cross-end están
+                intercambiados.
+              </dd>
+            </dl>
+          </details>
+        </h4>
+        <!--nowrap | wrap | wrap-reverse;-->
+        <div class="radio">
+          <input
+            name="flex-wrap"
+            type="radio"
+            class="flex-wrap"
+            id="R21"
+            value="nowrap"
+            checked
+          /><label for="R21">nowrap:</label>
+          <input
+            name="flex-wrap"
+            type="radio"
+            class="flex-wrap"
+            id="R22"
+            value="wrap"
+          /><label for="R22">wrap:</label>
+          <input
+            name="flex-wrap"
+            type="radio"
+            class="flex-wrap"
+            id="R23"
+            value="wrap-reverse"
+          /><label for="R23">wrap-reverse:</label>
+        </div>
       </div>
-    </div>
-    <div class="flex-container" id="direction">
-      <div class="item" data-color="2a80b9">
-        <p>1</p>
+      <div class="flex-container" id="wrap">
+        <div class="item" data-color="2a80b9">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="8f44ad">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="16a086">
+          <p>3</p>
+        </div>
+        <div class="item" data-color="f1c40f">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="e77e23">
+          <p>5</p>
+        </div>
       </div>
-      <div class="item" data-color="8f44ad">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="16a086">
-        <p>3</p>
-      </div>
-      <div class="item" data-color="f1c40f">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="e77e23">
-        <p>5</p>
-      </div>
-    </div>
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-wrap.php">flex-wrap</a> -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-wrap">flex-wrap</a>
-            <p>
-              <small>Especifica si los elementos "hijos" son obligados a permanecer en una misma línea o pueden fluir en
-                varias líneas. También te permite controlar la dirección en la cual serán apilados los
-                elementos.</small>
-            </p>
-          </summary>
-          <dl>
-            <dt>nowrap</dt>
-            <dd>Los elementos flex son distribuidos en una sola línea, lo cual puede llevar a que se desborde el
-              contenedor flex.</dd>
-            <dt>wrap</dt>
-            <dd>Los elementos flex son colocados en varias líneas.</dd>
-            <dt>wrap-reverse</dt>
-            <dd>Actúa como &lt;wrap&gt; pero cross-start y cross-end están intercambiados.</dd>
-          </dl>
-        </details>
-      </h4>
-      <!--nowrap | wrap | wrap-reverse;-->
-      <div class="radio">
-        <input name="flex-wrap" type="radio" class="flex-wrap" id="R21" value="nowrap" checked /><label
-          for="R21">nowrap:</label>
-        <input name="flex-wrap" type="radio" class="flex-wrap" id="R22" value="wrap" /><label for="R22">wrap:</label>
-        <input name="flex-wrap" type="radio" class="flex-wrap" id="R23" value="wrap-reverse" /><label
-          for="R23">wrap-reverse:</label>
-      </div>
-    </div>
-    <div class="flex-container" id="wrap">
-      <div class="item" data-color="2a80b9">
-        <p>1</p>
-      </div>
-      <div class="item" data-color="8f44ad">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="16a086">
-        <p>3</p>
-      </div>
-      <div class="item" data-color="f1c40f">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="e77e23">
-        <p>5</p>
-      </div>
-    </div>
-
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-items.php"
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-items.php"
             >align-items</a
           > -->
-            <!-- <a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container"
+              <!-- <a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container"
             >align-items</a
           > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-items">align-items</a>
-            <p>
-              <small>Controla la alineación de los elementos a lo largo de su eje transversal.</small>
-            </p>
-          </summary>
-          <dl>
-            <dt>flex-start</dt>
-            <dd>Agrupa los elementos flex desde el incio</dd>
-            <dt>flex-end</dt>
-            <dd>Agrupa los elementos flex desde el final</dd>
-            <dt>center</dt>
-            <dd>Agrupa los elementos alrededor del centro</dd>
-            <dt>baseline</dt>
-            <dd>Alineamiento de desborde</dd>
-            <dt>stretch</dt>
-            <dd>Estira los elementos hasta ocupar todo el espacio</dd>
-          </dl>
-        </details>
-      </h4>
-      <!-- flex-start | flex-end | center | baseline | stretch;-->
-      <div class="radio">
-        <input name="flex-align-items" type="radio" class="flex-align-items" id="R31" value="align-items-start" /><label
-          for="R31">flex-start:</label>
-        <input name="flex-align-items" type="radio" class="flex-align-items" id="R32" value="align-items-end" /><label
-          for="R32">flex-end:</label>
-        <input name="flex-align-items" type="radio" class="flex-align-items" id="R33"
-          value="align-items-center" /><label for="R33">center:</label>
-        <input name="flex-align-items" type="radio" class="flex-align-items" id="R34"
-          value="align-items-baseline" /><label for="R34">baseline:</label>
-        <input name="flex-align-items" type="radio" class="flex-align-items" id="R35" value="align-items-stretch"
-          checked /><label for="R35">stretch:</label>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/CSS/align-items" target="_blank"
+                >align-items</a
+              >
+              <p>
+                <small
+                  >Controla la alineación de los elementos a lo largo de su eje
+                  transversal.</small
+                >
+              </p>
+            </summary>
+            <dl>
+              <dt>flex-start</dt>
+              <dd>Agrupa los elementos flex desde el incio</dd>
+              <dt>flex-end</dt>
+              <dd>Agrupa los elementos flex desde el final</dd>
+              <dt>center</dt>
+              <dd>Agrupa los elementos alrededor del centro</dd>
+              <dt>baseline</dt>
+              <dd>Alineamiento de desborde</dd>
+              <dt>stretch</dt>
+              <dd>Estira los elementos hasta ocupar todo el espacio</dd>
+            </dl>
+          </details>
+        </h4>
+        <!-- flex-start | flex-end | center | baseline | stretch;-->
+        <div class="radio">
+          <input
+            name="flex-align-items"
+            type="radio"
+            class="flex-align-items"
+            id="R31"
+            value="align-items-start"
+          /><label for="R31">flex-start:</label>
+          <input
+            name="flex-align-items"
+            type="radio"
+            class="flex-align-items"
+            id="R32"
+            value="align-items-end"
+          /><label for="R32">flex-end:</label>
+          <input
+            name="flex-align-items"
+            type="radio"
+            class="flex-align-items"
+            id="R33"
+            value="align-items-center"
+          /><label for="R33">center:</label>
+          <input
+            name="flex-align-items"
+            type="radio"
+            class="flex-align-items"
+            id="R34"
+            value="align-items-baseline"
+          /><label for="R34">baseline:</label>
+          <input
+            name="flex-align-items"
+            type="radio"
+            class="flex-align-items"
+            id="R35"
+            value="align-items-stretch"
+            checked
+          /><label for="R35">stretch:</label>
+        </div>
       </div>
-    </div>
-    <div class="flex-container" id="align">
-      <div class="item" data-color="2a80b9">
-        <p>1</p>
+      <div class="flex-container" id="align">
+        <div class="item" data-color="2a80b9">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="8f44ad">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="16a086">
+          <p style="font-size: 50px">3</p>
+        </div>
+        <div class="item" data-color="f1c40f">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="e77e23">
+          <p>5</p>
+        </div>
       </div>
-      <div class="item" data-color="8f44ad">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="16a086">
-        <p style="font-size: 50px">3</p>
-      </div>
-      <div class="item" data-color="f1c40f">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="e77e23">
-        <p>5</p>
-      </div>
-    </div>
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-justify-content.php"
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-justify-content.php"
             >justify-content</a
           > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/justify-content">justify-content</a>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/CSS/justify-content" target="_blank"
+                >justify-content</a
+              >
+              <p>
+                <small
+                  >Define cómo el navegador distribuye el espacio entre y
+                  alrededor de los elementos, a lo largo del eje principal de su
+                  contenedor.</small
+                >
+              </p>
+            </summary>
             <p>
-              <small>Define cómo el navegador distribuye el espacio entre y alrededor de los elementos, a lo largo del
-                eje
-                principal de su contenedor.</small>
+              <small
+                >El alineamiento se produce luego de que las longitudes y
+                márgenes automáticos son aplicados, lo que significa que, si
+                existe al menos un elemento flexible con flex-grow diferente a
+                0, no tendrá efecto ya que no habrá espacio disponible.</small
+              >
             </p>
-          </summary>
-          <p>
-            <small>El alineamiento se produce luego de que las longitudes y márgenes automáticos son aplicados, lo que
-              significa que, si existe al menos un elemento flexible con flex-grow diferente a 0, no tendrá efecto ya
-              que
-              no habrá espacio disponible.</small>
-          </p>
-          <dl>
-            <dt>flex-start</dt>
-            <dd>Alinear items flex desde el comienzo</dd>
-            <dt>flex-end</dt>
-            <dd>Alinear items desde el final</dd>
-            <dt>center</dt>
-            <dd>Alinear items en el centro</dd>
-            <dt>space-between</dt>
-            <dd>El primer item al inicio, el último al final</dd>
-            <dt>space-around</dt>
-            <dd>Distribuir items uniformemente. Los items tienen el mismo espacio a su alrededor</dd>
-          </dl>
-        </details>
-      </h4>
-      <!--justify-content: flex-start | flex-end | center | space-between | space-around; -->
-      <div class="radio">
-        <input name="justify-content" type="radio" class="justify-content" id="R41" value="justify-start"
-          checked /><label for="R41">flex-start:</label>
-        <input name="justify-content" type="radio" class="justify-content" id="R42" value="justify-end" /><label
-          for="R42">flex-end:</label>
-        <input name="justify-content" type="radio" class="justify-content" id="R43"
-          value="justify-space-between" /><label for="R43">space-between:</label>
-        <input name="justify-content" type="radio" class="justify-content" id="R44" value="justify-center" /><label
-          for="R44">center:</label>
-        <input name="justify-content" type="radio" class="justify-content" id="R45"
-          value="justify-space-around" /><label for="R45">space-around:</label>
+            <dl>
+              <dt>flex-start</dt>
+              <dd>Alinear items flex desde el comienzo</dd>
+              <dt>flex-end</dt>
+              <dd>Alinear items desde el final</dd>
+              <dt>center</dt>
+              <dd>Alinear items en el centro</dd>
+              <dt>space-between</dt>
+              <dd>El primer item al inicio, el último al final</dd>
+              <dt>space-around</dt>
+              <dd>
+                Distribuir items uniformemente. Los items tienen el mismo
+                espacio a su alrededor
+              </dd>
+            </dl>
+          </details>
+        </h4>
+        <!--justify-content: flex-start | flex-end | center | space-between | space-around; -->
+        <div class="radio">
+          <input
+            name="justify-content"
+            type="radio"
+            class="justify-content"
+            id="R41"
+            value="justify-start"
+            checked
+          /><label for="R41">flex-start:</label>
+          <input
+            name="justify-content"
+            type="radio"
+            class="justify-content"
+            id="R42"
+            value="justify-end"
+          /><label for="R42">flex-end:</label>
+          <input
+            name="justify-content"
+            type="radio"
+            class="justify-content"
+            id="R43"
+            value="justify-space-between"
+          /><label for="R43">space-between:</label>
+          <input
+            name="justify-content"
+            type="radio"
+            class="justify-content"
+            id="R44"
+            value="justify-center"
+          /><label for="R44">center:</label>
+          <input
+            name="justify-content"
+            type="radio"
+            class="justify-content"
+            id="R45"
+            value="justify-space-around"
+          /><label for="R45">space-around:</label>
+        </div>
       </div>
-    </div>
-    <div class="flex-container" id="justify">
-      <div class="item" data-color="2a80b9">
-        <p>1</p>
+      <div class="flex-container" id="justify">
+        <div class="item" data-color="2a80b9">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="8f44ad">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="16a086">
+          <p>3</p>
+        </div>
+        <div class="item" data-color="f1c40f">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="e77e23">
+          <p>5</p>
+        </div>
       </div>
-      <div class="item" data-color="8f44ad">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="16a086">
-        <p>3</p>
-      </div>
-      <div class="item" data-color="f1c40f">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="e77e23">
-        <p>5</p>
-      </div>
-    </div>
 
-    <!-- <p>
+      <!-- <p>
         En <strong>Google Chrome</strong> y <strong>Opera</strong>: problemas al
         cambiar dinamicamente entre <code>justify-content:space-between</code> y
         <code>justify-content:space-around</code>
       </p> -->
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-content.php"
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-content.php"
             >align-content</a
           > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-content">align-content</a>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/CSS/align-content" target="_blank"
+                >align-content</a
+              >
+              <p>
+                <small
+                  >Ajusta las líneas dentro de un contenedor flex cuando hay
+                  espacio extra en el eje transversal.</small
+                >
+              </p>
+            </summary>
             <p>
-              <small>Ajusta las líneas dentro de un contenedor flex cuando hay espacio extra en el eje
-                transversal.</small>
-            </p>
-          </summary>
-          <p>
-            <small>
-              Esta propiedad no tiene efecto en cajas flexibles de una sola línea.
-            </small>
-          </p>
-          <dl>
-            <dt>flex-start</dt>
-            <dd>Ajusta las líneas desde el inicio del eje transversal</dd>
-            <dt>flex-end</dt>
-            <dd>Ajusta las líneas desde el final del eje transversal</dd>
-            <dt>center</dt>
-            <dd>Ajusta las líneas al rededor del centro del eje transversal</dd>
-            <dt>space-between</dt>
-            <dd>Distribuye las líneas a lo largo del eje transversal, de principio a fin</dd>
-            <dt>space-around</dt>
-            <dd>Distribuye las líneas a lo largo del eje transversal, igualmente espaciados</dd>
-            <dt>stretch</dt>
-            <dd>Estira las líneas para que ocupen el eje transversal completo</dd>
-          </dl>
-        </details>
-      </h4>
-      <!--justify-content: flex-start | flex-end | center | space-between | space-around; -->
-      <div class="radio">
-        <input name="align-content" type="radio" class="align-content" id="R51" value="align-content-start" /><label
-          for="R51">flex-start:</label>
-        <input name="align-content" type="radio" class="align-content" id="R52" value="align-content-end" /><label
-          for="R52">flex-end:</label>
-        <input name="align-content" type="radio" class="align-content" id="R53" value="align-content-center" /><label
-          for="R53">center:</label>
-        <input name="align-content" type="radio" class="align-content" id="R54"
-          value="align-content-space-between" /><label for="R54">space-between:</label>
-        <input name="align-content" type="radio" class="align-content" id="R55"
-          value="align-content-space-around" /><label for="R55">space-around:</label>
-        <input name="align-content" type="radio" class="align-content" id="R56" value="align-content-stretch"
-          checked /><label for="R56">stretch:</label>
-      </div>
-    </div>
-    <div class="flex-container" id="alignContent">
-      <div class="item" data-color="1bbc9d">
-        <p>1</p>
-      </div>
-      <div class="item" data-color="2fcc71">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="3598dc">
-        <p>3</p>
-      </div>
-      <div class="item" data-color="9c59b8">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="34495e">
-        <p>5</p>
-      </div>
-      <div class="item" data-color="16a086">
-        <p>6</p>
-      </div>
-      <div class="item" data-color="27ae61">
-        <p>7</p>
-      </div>
-      <div class="item" data-color="2a80b9">
-        <p>8</p>
-      </div>
-      <div class="item" data-color="8f44ad">
-        <p>9</p>
-      </div>
-      <div class="item" data-color="2d3e50">
-        <p>10</p>
-      </div>
-      <div class="item" data-color="f1c40f">
-        <p>11</p>
-      </div>
-      <div class="item" data-color="e77e23">
-        <p>12</p>
-      </div>
-      <div class="item" data-color="e84c3d">
-        <p>13</p>
-      </div>
-      <div class="item" data-color="ecf0f1">
-        <p>14</p>
-      </div>
-      <div class="item" data-color="96a6a6">
-        <p>15</p>
-      </div>
-      <div class="item" data-color="f49c14">
-        <p>16</p>
-      </div>
-      <div class="item" data-color="d55401">
-        <p>17</p>
-      </div>
-      <div class="item" data-color="c1392b">
-        <p>18</p>
-      </div>
-      <div class="item" data-color="bec3c7">
-        <p>19</p>
-      </div>
-      <div class="item" data-color="808b8d">
-        <p>20</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- propiedades de los items -->
-
-  <div class="principal">
-    <h2>Propiedades de los elementos flex</h2>
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-self.php"
-            >align-self</a
-          > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-self">align-self</a>
-            <p>
-              <small>Alinea los elementos flexibles de la línea flexible actual, reemplazando el
-                valor de align-items. Si el límite transversal de alguno de los elementos está definido como auto, el
-                valor
-                de align-self es ignorado.</small>
-            </p>
-          </summary>
-          <dl>
-            <dt>auto</dt>
-            <dd>Se calcula acorde al valor de align-items del padre, o al de stretch si el elemento no tiene padre.</dd>
-            <dt>flex-start</dt>
-            <dd>El límite transversal inicial del elemento flexible es unido al borde transversal inicial de la línea.
-            </dd>
-            <dt>flex-end</dt>
-            <dd>El límite transversal final del elemento flexible es unido al borde transversal final de la línea.</dd>
-            <dt>center</dt>
-            <dd>Los límites del elemento flexible son centrados dentro de la línea en su eje transversal. Si el tamaño
-              transversal del elemento es superior al del contenedor, se excederá por igual hacia ambas direcciones.
-            </dd>
-            <dt>baseline</dt>
-            <dd>Todos los elementos flexibles son ajustados de modo que sus bases estén alineadas. El elemento con la
-              distancia mayor entre su límite transversal inicial y su base es combinado con el borde transversal de la
-              línea.</dd>
-            <dt>stretch</dt>
-            <dd>Las elementos flexibles son estirados de modo que el tamaño transversal de sus límites sea el mismo de
-              la línea, manteniendo sus restricciones de anchura y altura.</dd>
-          </dl>
-        </details>
-      </h4>
-      <!--auto | flex-start | flex-end | center | baseline | stretch -->
-      <div class="radio">
-        <input name="align-self" type="radio" class="align-self" id="R61" value="align-self-auto" checked /><label
-          for="R61">auto:</label>
-        <input name="align-self" type="radio" class="align-self" id="R62" value="align-self-start" /><label
-          for="R62">flex-start:</label>
-        <input name="align-self" type="radio" class="align-self" id="R63" value="align-self-end" /><label
-          for="R63">flex-end:</label>
-        <input name="align-self" type="radio" class="align-self" id="R64" value="align-self-center" /><label
-          for="R64">center:</label>
-        <input name="align-self" type="radio" class="align-self" id="R65" value="align-self-baseline" /><label
-          for="R65">baseline:</label>
-        <input name="align-self" type="radio" class="align-self" id="R66" value="align-self-stretch" /><label
-          for="R66">stretch:</label>
-      </div>
-    </div>
-    <div class="flex-container align-items-center" id="FCI1">
-      <div class="item" data-color="f49c14">
-        <p>1</p>
-      </div>
-      <div class="item" data-color="d55401">
-        <p>2</p>
-      </div>
-      <div class="item" data-color="c1392b" id="alignSelf">
-        <p style="font-size: 50px">3</p>
-      </div>
-      <div class="item" data-color="bec3c7">
-        <p>4</p>
-      </div>
-      <div class="item" data-color="808b8d">
-        <p>5</p>
-      </div>
-    </div>
-
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-abreviado.php#flexGrow"
-            >flex-grow</a
-          > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-grow">flex-grow</a>
-            <p>
-              <small>Especifica el factor de crecimiento de un elemento flexible (que tiene
-                asignado display:flex), en su dirección principal.
+              <small>
+                Esta propiedad no tiene efecto en cajas flexibles de una sola
+                línea.
               </small>
             </p>
-          </summary>
-          <p>
-            <small>
-              El factor de crecimiento especifica qué cantidad del
-              espacio restante dentro del contenedor flexible, debería ocupar el item en cuestión.
-            </small>
-          </p>
-          <p>
-            <small>
-              La dirección principal puede ser la altura o el ancho del elemento, dependiendo del valor de
-              flex-direction.
-            </small>
-          </p>
-          <p>
-            <small>
-              El espacio restante es el tamaño del contenedor flexible menos el tamaño de todos los elementos flexibles
-              juntos. Si todos los ítems dentro del contenedor tienen el mismo factor de crecimiento, todos los
-              elementos
-              reciben la misma cantidad del espacio restante. De lo contrario, el espacio restante se distribuye en
-              función
-              de los diferentes factores de crecimientos de cada item.</small>
-          </p>
-          <p>Los valores negativos no son válidos.</p>
-        </details>
-      </h4>
-      <!--auto | flex-start | flex-end | center | baseline | stretch -->
-      <div class="radio">
-        <span class="nbsp"><label for="R71">elemento 1: </label><input type="number" class="flex-grow" id="R71"
-            min="0" /></span>
-        <span class="nbsp"><label for="R72">elemento 2: </label><input type="number" class="flex-grow" id="R72"
-            min="0" /></span>
-        <span class="nbsp"><label for="R73">elemento 3: </label><input type="number" class="flex-grow" id="R73"
-            min="0" /></span>
-        <span class="nbsp"><label for="R74">elemento 4: </label><input type="number" class="flex-grow" id="R74"
-            min="0" /></span>
-        <span class="nbsp"><label for="R75">elemento 5: </label><input type="number" class="flex-grow" id="R75"
-            min="0" /></span>
+            <dl>
+              <dt>flex-start</dt>
+              <dd>Ajusta las líneas desde el inicio del eje transversal</dd>
+              <dt>flex-end</dt>
+              <dd>Ajusta las líneas desde el final del eje transversal</dd>
+              <dt>center</dt>
+              <dd>
+                Ajusta las líneas al rededor del centro del eje transversal
+              </dd>
+              <dt>space-between</dt>
+              <dd>
+                Distribuye las líneas a lo largo del eje transversal, de
+                principio a fin
+              </dd>
+              <dt>space-around</dt>
+              <dd>
+                Distribuye las líneas a lo largo del eje transversal, igualmente
+                espaciados
+              </dd>
+              <dt>stretch</dt>
+              <dd>
+                Estira las líneas para que ocupen el eje transversal completo
+              </dd>
+            </dl>
+          </details>
+        </h4>
+        <!--justify-content: flex-start | flex-end | center | space-between | space-around; -->
+        <div class="radio">
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R51"
+            value="align-content-start"
+          /><label for="R51">flex-start:</label>
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R52"
+            value="align-content-end"
+          /><label for="R52">flex-end:</label>
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R53"
+            value="align-content-center"
+          /><label for="R53">center:</label>
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R54"
+            value="align-content-space-between"
+          /><label for="R54">space-between:</label>
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R55"
+            value="align-content-space-around"
+          /><label for="R55">space-around:</label>
+          <input
+            name="align-content"
+            type="radio"
+            class="align-content"
+            id="R56"
+            value="align-content-stretch"
+            checked
+          /><label for="R56">stretch:</label>
+        </div>
       </div>
-    </div>
-    <div class="flex-container align-items-center" id="FCI2">
-      <div class="item" id="itemR71" data-color="f49c14">
-        <p>1</p>
-      </div>
-      <div class="item" id="itemR72" data-color="d55401">
-        <p>2</p>
-      </div>
-      <div class="item" id="itemR73" data-color="c1392b">
-        <p>3</p>
-      </div>
-      <div class="item" id="itemR74" data-color="bec3c7">
-        <p>4</p>
-      </div>
-      <div class="item" id="itemR75" data-color="808b8d">
-        <p>5</p>
+      <div class="flex-container" id="alignContent">
+        <div class="item" data-color="1bbc9d">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="2fcc71">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="3598dc">
+          <p>3</p>
+        </div>
+        <div class="item" data-color="9c59b8">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="34495e">
+          <p>5</p>
+        </div>
+        <div class="item" data-color="16a086">
+          <p>6</p>
+        </div>
+        <div class="item" data-color="27ae61">
+          <p>7</p>
+        </div>
+        <div class="item" data-color="2a80b9">
+          <p>8</p>
+        </div>
+        <div class="item" data-color="8f44ad">
+          <p>9</p>
+        </div>
+        <div class="item" data-color="2d3e50">
+          <p>10</p>
+        </div>
+        <div class="item" data-color="f1c40f">
+          <p>11</p>
+        </div>
+        <div class="item" data-color="e77e23">
+          <p>12</p>
+        </div>
+        <div class="item" data-color="e84c3d">
+          <p>13</p>
+        </div>
+        <div class="item" data-color="ecf0f1">
+          <p>14</p>
+        </div>
+        <div class="item" data-color="96a6a6">
+          <p>15</p>
+        </div>
+        <div class="item" data-color="f49c14">
+          <p>16</p>
+        </div>
+        <div class="item" data-color="d55401">
+          <p>17</p>
+        </div>
+        <div class="item" data-color="c1392b">
+          <p>18</p>
+        </div>
+        <div class="item" data-color="bec3c7">
+          <p>19</p>
+        </div>
+        <div class="item" data-color="808b8d">
+          <p>20</p>
+        </div>
       </div>
     </div>
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a
+    <!-- propiedades de los items -->
+
+    <div class="principal">
+      <h2>Propiedades de los elementos flex</h2>
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-align-self.php"
+            >align-self</a
+          > -->
+              <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-self" target="_blank"
+                >align-self</a
+              >
+              <p>
+                <small
+                  >Alinea los elementos flexibles de la línea flexible actual,
+                  reemplazando el valor de align-items. Si el límite transversal
+                  de alguno de los elementos está definido como auto, el valor
+                  de align-self es ignorado.</small
+                >
+              </p>
+            </summary>
+            <dl>
+              <dt>auto</dt>
+              <dd>
+                Se calcula acorde al valor de align-items del padre, o al de
+                stretch si el elemento no tiene padre.
+              </dd>
+              <dt>flex-start</dt>
+              <dd>
+                El límite transversal inicial del elemento flexible es unido al
+                borde transversal inicial de la línea.
+              </dd>
+              <dt>flex-end</dt>
+              <dd>
+                El límite transversal final del elemento flexible es unido al
+                borde transversal final de la línea.
+              </dd>
+              <dt>center</dt>
+              <dd>
+                Los límites del elemento flexible son centrados dentro de la
+                línea en su eje transversal. Si el tamaño transversal del
+                elemento es superior al del contenedor, se excederá por igual
+                hacia ambas direcciones.
+              </dd>
+              <dt>baseline</dt>
+              <dd>
+                Todos los elementos flexibles son ajustados de modo que sus
+                bases estén alineadas. El elemento con la distancia mayor entre
+                su límite transversal inicial y su base es combinado con el
+                borde transversal de la línea.
+              </dd>
+              <dt>stretch</dt>
+              <dd>
+                Las elementos flexibles son estirados de modo que el tamaño
+                transversal de sus límites sea el mismo de la línea, manteniendo
+                sus restricciones de anchura y altura.
+              </dd>
+            </dl>
+          </details>
+        </h4>
+        <!--auto | flex-start | flex-end | center | baseline | stretch -->
+        <div class="radio">
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R61"
+            value="align-self-auto"
+            checked
+          /><label for="R61">auto:</label>
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R62"
+            value="align-self-start"
+          /><label for="R62">flex-start:</label>
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R63"
+            value="align-self-end"
+          /><label for="R63">flex-end:</label>
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R64"
+            value="align-self-center"
+          /><label for="R64">center:</label>
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R65"
+            value="align-self-baseline"
+          /><label for="R65">baseline:</label>
+          <input
+            name="align-self"
+            type="radio"
+            class="align-self"
+            id="R66"
+            value="align-self-stretch"
+          /><label for="R66">stretch:</label>
+        </div>
+      </div>
+      <div class="flex-container align-items-center" id="FCI1">
+        <div class="item" data-color="f49c14">
+          <p>1</p>
+        </div>
+        <div class="item" data-color="d55401">
+          <p>2</p>
+        </div>
+        <div class="item" data-color="c1392b" id="alignSelf">
+          <p style="font-size: 50px">3</p>
+        </div>
+        <div class="item" data-color="bec3c7">
+          <p>4</p>
+        </div>
+        <div class="item" data-color="808b8d">
+          <p>5</p>
+        </div>
+      </div>
+
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-abreviado.php#flexGrow"
+            >flex-grow</a
+          > -->
+              <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-grow" target="_blank"
+                >flex-grow</a
+              >
+              <p>
+                <small
+                  >Especifica el factor de crecimiento de un elemento flexible
+                  (que tiene asignado display:flex), en su dirección principal.
+                </small>
+              </p>
+            </summary>
+            <p>
+              <small>
+                El factor de crecimiento especifica qué cantidad del espacio
+                restante dentro del contenedor flexible, debería ocupar el item
+                en cuestión.
+              </small>
+            </p>
+            <p>
+              <small>
+                La dirección principal puede ser la altura o el ancho del
+                elemento, dependiendo del valor de flex-direction.
+              </small>
+            </p>
+            <p>
+              <small>
+                El espacio restante es el tamaño del contenedor flexible menos
+                el tamaño de todos los elementos flexibles juntos. Si todos los
+                ítems dentro del contenedor tienen el mismo factor de
+                crecimiento, todos los elementos reciben la misma cantidad del
+                espacio restante. De lo contrario, el espacio restante se
+                distribuye en función de los diferentes factores de crecimientos
+                de cada item.</small
+              >
+            </p>
+            <p>Los valores negativos no son válidos.</p>
+          </details>
+        </h4>
+        <!--auto | flex-start | flex-end | center | baseline | stretch -->
+        <div class="radio">
+          <span class="nbsp"
+            ><label for="R71">elemento 1: </label
+            ><input type="number" class="flex-grow" id="R71" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R72">elemento 2: </label
+            ><input type="number" class="flex-grow" id="R72" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R73">elemento 3: </label
+            ><input type="number" class="flex-grow" id="R73" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R74">elemento 4: </label
+            ><input type="number" class="flex-grow" id="R74" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R75">elemento 5: </label
+            ><input type="number" class="flex-grow" id="R75" min="0"
+          /></span>
+        </div>
+      </div>
+      <div class="flex-container align-items-center" id="FCI2">
+        <div class="item" id="itemR71" data-color="f49c14">
+          <p>1</p>
+        </div>
+        <div class="item" id="itemR72" data-color="d55401">
+          <p>2</p>
+        </div>
+        <div class="item" id="itemR73" data-color="c1392b">
+          <p>3</p>
+        </div>
+        <div class="item" id="itemR74" data-color="bec3c7">
+          <p>4</p>
+        </div>
+        <div class="item" id="itemR75" data-color="808b8d">
+          <p>5</p>
+        </div>
+      </div>
+
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a
             href="http://w3.unpocodetodo.info/css3/flex-abreviado.php#flexShrink"
             >flex-shrink</a
           > -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-shrink">flex-shrink</a>
-            <p>
-              <small>Especifica el factor de contracción de un elemento.</small>
-            </p>
-          </summary>
-          <small>Los elementos se encogerán para llenar el
-            contenedor de acuerdo a su número flex-shrink, cuando el tamaño por defecto de los elementos sea mayor al de
-            su contenedor flex.</small>
-          <p>Los valores negativos no son válidos</p>
-        </details>
-      </h4>
-      <!--auto | flex-start | flex-end | center | baseline | stretch -->
-      <div class="radio">
-        <span class="nbsp"><label for="R81">elemento 1: </label><input type="number" class="flex-shrink" id="R81"
-            min="0" /></span>
-        <span class="nbsp"><label for="R82">elemento 2: </label><input type="number" class="flex-shrink" id="R82"
-            min="0" /></span>
-        <span class="nbsp"><label for="R83">elemento 3: </label><input type="number" class="flex-shrink" id="R83"
-            min="0" /></span>
-        <span class="nbsp"><label for="R84">elemento 4: </label><input type="number" class="flex-shrink" id="R84"
-            min="0" /></span>
-        <span class="nbsp"><label for="R85">elemento 5: </label><input type="number" class="flex-shrink" id="R85"
-            min="0" /></span>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/CSS/flex-shrink" target="_blank"
+                >flex-shrink</a
+              >
+              <p>
+                <small
+                  >Especifica el factor de contracción de un elemento.</small
+                >
+              </p>
+            </summary>
+            <small
+              >Los elementos se encogerán para llenar el contenedor de acuerdo a
+              su número flex-shrink, cuando el tamaño por defecto de los
+              elementos sea mayor al de su contenedor flex.</small
+            >
+            <p>Los valores negativos no son válidos</p>
+          </details>
+        </h4>
+        <!--auto | flex-start | flex-end | center | baseline | stretch -->
+        <div class="radio">
+          <span class="nbsp"
+            ><label for="R81">elemento 1: </label
+            ><input type="number" class="flex-shrink" id="R81" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R82">elemento 2: </label
+            ><input type="number" class="flex-shrink" id="R82" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R83">elemento 3: </label
+            ><input type="number" class="flex-shrink" id="R83" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R84">elemento 4: </label
+            ><input type="number" class="flex-shrink" id="R84" min="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R85">elemento 5: </label
+            ><input type="number" class="flex-shrink" id="R85" min="0"
+          /></span>
+        </div>
       </div>
-    </div>
-    <div class="flex-container align-items-center" id="FCI3">
-      <div class="item" id="itemR81" data-color="f49c14">
-        <p>1</p>
+      <div class="flex-container align-items-center" id="FCI3">
+        <div class="item" id="itemR81" data-color="f49c14">
+          <p>1</p>
+        </div>
+        <div class="item" id="itemR82" data-color="d55401">
+          <p>2</p>
+        </div>
+        <div class="item" id="itemR83" data-color="c1392b">
+          <p>3</p>
+        </div>
+        <div class="item" id="itemR84" data-color="bec3c7">
+          <p>4</p>
+        </div>
+        <div class="item" id="itemR85" data-color="808b8d">
+          <p>5</p>
+        </div>
       </div>
-      <div class="item" id="itemR82" data-color="d55401">
-        <p>2</p>
-      </div>
-      <div class="item" id="itemR83" data-color="c1392b">
-        <p>3</p>
-      </div>
-      <div class="item" id="itemR84" data-color="bec3c7">
-        <p>4</p>
-      </div>
-      <div class="item" id="itemR85" data-color="808b8d">
-        <p>5</p>
-      </div>
-    </div>
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-abreviado.php">flex</a> -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex">flex</a>
-            <p>
-              <small>Es una propiedad resumida que indica la capacidad de un elemento para
-                alterar sus dimensiones y llenar el espacio disponible.</small>
-            </p>
-          </summary>
-          <small>Los elementos pueden ser estirados para
-            utilizar el espacio disponible proporcional a su factor de crecimiento, o su factor de contracción, para
-            evitar desbordamiento.</small>
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-abreviado.php">flex</a> -->
+              <a href="https://developer.mozilla.org/es/docs/Web/CSS/flex" target="_blank"
+                >flex</a
+              >
+              <p>
+                <small
+                  >Es una propiedad resumida que indica la capacidad de un
+                  elemento para alterar sus dimensiones y llenar el espacio
+                  disponible.</small
+                >
+              </p>
+            </summary>
+            <small
+              >Los elementos pueden ser estirados para utilizar el espacio
+              disponible proporcional a su factor de crecimiento, o su factor de
+              contracción, para evitar desbordamiento.</small
+            >
 
-          <pre><code>/* 0 0 auto */
+            <pre><code>/* 0 0 auto */
 flex: none;
 
 /* Un valor, número sin unidades: flex-grow */
@@ -599,102 +856,180 @@ flex: 2 2;
 /* Tres valores: flex-grow | flex-shrink | flex-basis */
 flex: 2 2 10%;
 </code></pre>
-        </details>
-      </h4>
-      <!--auto | flex-start | flex-end | center | baseline | stretch -->
-      <p>.item { flex: flex-grow [flex-shrink] [flex-basis]; }</p>
-      <table id="flexBasis">
-        <tr>
-          <td>elemento 1</td>
-          <td>elemento 2</td>
-        </tr>
-        <tr>
-          <td>
-            <input type="number" class="flex-basis-grow" id="G1" min="0" value="0" /><label for="G1">flex-grow</label>
-          </td>
-          <td>
-            <input type="number" class="flex-basis-grow" id="G2" min="0" value="0" /><label for="G2">flex-grow</label>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="number" class="flex-basis-shrink" id="S1" min="0" value="0" /><label
-              for="S1">flex-shrink</label>
-          </td>
-          <td>
-            <input type="number" class="flex-basis-shrink" id="S2" min="0" value="0" /><label
-              for="S2">flex-shrink</label>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="number" class="flex-basis" id="B1" min="0" value="50" /><label for="B1">flex-basis %</label>
-          </td>
-          <td>
-            <input type="number" class="flex-basis" id="B2" min="0" value="50" /><label for="B2">flex-basis %</label>
-          </td>
-        </tr>
-      </table>
-    </div>
+          </details>
+        </h4>
+        <!--auto | flex-start | flex-end | center | baseline | stretch -->
+        <p>.item { flex: flex-grow [flex-shrink] [flex-basis]; }</p>
+        <table id="flexBasis">
+          <tr>
+            <td>elemento 1</td>
+            <td>elemento 2</td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="number"
+                class="flex-basis-grow"
+                id="G1"
+                min="0"
+                value="0"
+              /><label for="G1">flex-grow</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="flex-basis-grow"
+                id="G2"
+                min="0"
+                value="0"
+              /><label for="G2">flex-grow</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="number"
+                class="flex-basis-shrink"
+                id="S1"
+                min="0"
+                value="0"
+              /><label for="S1">flex-shrink</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="flex-basis-shrink"
+                id="S2"
+                min="0"
+                value="0"
+              /><label for="S2">flex-shrink</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="number"
+                class="flex-basis"
+                id="B1"
+                min="0"
+                value="50"
+              /><label for="B1">flex-basis %</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="flex-basis"
+                id="B2"
+                min="0"
+                value="50"
+              /><label for="B2">flex-basis %</label>
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div class="flex-container align-items-center" id="FCI4">
-      <div class="item" id="item1" data-color="f49c14">
-        <p>1</p>
+      <div class="flex-container align-items-center" id="FCI4">
+        <div class="item" id="item1" data-color="f49c14">
+          <p>1</p>
+        </div>
+        <div class="item" id="item2" data-color="d55401">
+          <p>2</p>
+        </div>
       </div>
-      <div class="item" id="item2" data-color="d55401">
-        <p>2</p>
-      </div>
-    </div>
 
-    <div class="control">
-      <h4>
-        <details>
-          <summary>
-            <!-- <a href="http://w3.unpocodetodo.info/css3/flex-order.php">order</a> -->
-            <a href="https://developer.mozilla.org/es/docs/Web/CSS/order">order</a>
-            <p>
-              <small>Especifica el orden utilizado para disponer los elementos en su contenedor flexible.</small>
-            </p>
-          </summary>
-          <small> Los elementos
-            estarán dispuestos en orden ascendente según el valor de order. Los elementos con el mismo valor se
-            dispondrán en el orden en el cual aparecen en el código fuente.</small>
-          <p>Valor numérico incluyendo números negativos.</p>
-        </details>
-      </h4>
-      <!--auto | flex-start | flex-end | center | baseline | stretch -->
-      <div class="radio">
-        <span class="nbsp"><label for="R91">elemento 1: </label><input type="number" class="flex-order" id="R91"
-            min="-1" value="0" /></span>
-        <span class="nbsp"><label for="R92">elemento 2: </label><input type="number" class="flex-order" id="R92"
-            min="-1" value="0" /></span>
-        <span class="nbsp"><label for="R93">elemento 3: </label><input type="number" class="flex-order" id="R93"
-            min="-1" value="0" /></span>
-        <span class="nbsp"><label for="R94">elemento 4: </label><input type="number" class="flex-order" id="R94"
-            min="-1" value="0" /></span>
-        <span class="nbsp"><label for="R95">elemento 5: </label><input type="number" class="flex-order" id="R95"
-            min="-1" value="0" /></span>
+      <div class="control">
+        <h4>
+          <details>
+            <summary>
+              <!-- <a href="http://w3.unpocodetodo.info/css3/flex-order.php">order</a> -->
+              <a href="https://developer.mozilla.org/es/docs/Web/CSS/order" target="_blank"
+                >order</a
+              >
+              <p>
+                <small
+                  >Especifica el orden utilizado para disponer los elementos en
+                  su contenedor flexible.</small
+                >
+              </p>
+            </summary>
+            <small>
+              Los elementos estarán dispuestos en orden ascendente según el
+              valor de order. Los elementos con el mismo valor se dispondrán en
+              el orden en el cual aparecen en el código fuente.</small
+            >
+            <p>Valor numérico incluyendo números negativos.</p>
+          </details>
+        </h4>
+        <!--auto | flex-start | flex-end | center | baseline | stretch -->
+        <div class="radio">
+          <span class="nbsp"
+            ><label for="R91">elemento 1: </label
+            ><input
+              type="number"
+              class="flex-order"
+              id="R91"
+              min="-1"
+              value="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R92">elemento 2: </label
+            ><input
+              type="number"
+              class="flex-order"
+              id="R92"
+              min="-1"
+              value="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R93">elemento 3: </label
+            ><input
+              type="number"
+              class="flex-order"
+              id="R93"
+              min="-1"
+              value="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R94">elemento 4: </label
+            ><input
+              type="number"
+              class="flex-order"
+              id="R94"
+              min="-1"
+              value="0"
+          /></span>
+          <span class="nbsp"
+            ><label for="R95">elemento 5: </label
+            ><input
+              type="number"
+              class="flex-order"
+              id="R95"
+              min="-1"
+              value="0"
+          /></span>
+        </div>
+      </div>
+      <div class="flex-container align-items-center" id="FCI5">
+        <div class="item" id="orderR91" data-color="f49c14">
+          <p>1</p>
+        </div>
+        <div class="item" id="orderR92" data-color="d55401">
+          <p>2</p>
+        </div>
+        <div class="item" id="orderR93" data-color="c1392b">
+          <p>3</p>
+        </div>
+        <div class="item" id="orderR94" data-color="bec3c7">
+          <p>4</p>
+        </div>
+        <div class="item" id="orderR95" data-color="808b8d">
+          <p>5</p>
+        </div>
       </div>
     </div>
-    <div class="flex-container align-items-center" id="FCI5">
-      <div class="item" id="orderR91" data-color="f49c14">
-        <p>1</p>
-      </div>
-      <div class="item" id="orderR92" data-color="d55401">
-        <p>2</p>
-      </div>
-      <div class="item" id="orderR93" data-color="c1392b">
-        <p>3</p>
-      </div>
-      <div class="item" id="orderR94" data-color="bec3c7">
-        <p>4</p>
-      </div>
-      <div class="item" id="orderR95" data-color="808b8d">
-        <p>5</p>
-      </div>
-    </div>
-  </div>
-  Web original de: <a href="https://codepen.io/enxaneta/pen/adLPwv">Gabi @w3unpocodetodo</a>
-</body>
-
+    Web original de:
+    <a href="https://codepen.io/enxaneta/pen/adLPwv" target="_blank"
+      >Gabi @w3unpocodetodo</a
+    >
+  </body>
 </html>
